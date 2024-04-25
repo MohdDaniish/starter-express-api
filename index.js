@@ -145,7 +145,7 @@ app.post('/savedchatsss', async (req, res) => {
 
 
 const server = app.listen(1337, () => {
-    console.log('Server running!')
+    console.log('Danish Server running!')
 });
 
 const io = socketio(server)
