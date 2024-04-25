@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat App using Socket IO and Node JS</title> 
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<style>
+		.chat-container {
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #f5f5f5;
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.message-box {
+			margin-top: 20px;
+		}
+
+		.message {
+			background-color: #e2f7fe;
+			border-radius: 10px;
+			padding: 10px;
+			margin-bottom: 10px;
+			width: fit-content;
+			max-width: 70%;
+		}
+
+		.message.from-me {
+			background-color: #dcf8c6;
+			align-self: flex-end;
+		}
+        .messageArea::-webkit-scrollbar {
+            width: 4px;
+        }
+        .messageArea::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .messageArea::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 1px;
+        }
+        .messageArea::-webkit-scrollbar-thumb:hover {
+            background: #e5e7eb;
+        }
+       
+	</style>
+</head> 
+
+<body class="bg-gray-200" style="background-image: url('chatbg/chatbg.jpg');"> 
+	<div class="chat-container p-5" style="margin-top: 50px;">
+		<h1 class="font-bold text-green-500 text-3xl text-center mb-5">Nadcab Chat</h1> 
+		<h2 class="font-semibold text-xl text-center mb-5">Chat with chatgpt Developers</h2> 
+
+        <div class="messageArea flex flex-col mt-5" id="messageArea" style="height: 500px; overflow-y: auto;background:#e5e7eb;border-radius: 15px;padding: 15px;">
+			<!-- Messages will be displayed here -->
+		</div>
+
+		<form class="flex flex-col justify-center 
+				items-center mt-5" 
+		id="form" enctype="multipart/form-data">
+        <input type="hidden" id="fileUrl">
+			<input type="hidden" value="" id="savenumber"> 
+			<input type="hidden" value="0000000000" id="friendnumber"> 
+			<input class="border border-gray-400 rounded-md p-2 mb-2 w-full" type="text" placeholder="Your Name" id="myname"> 
+			<input class="border border-gray-400 rounded-md p-2 mb-2 w-full" style="display:none" placeholder="Chat With" id="friendname"> 
+			<input class="border border-gray-400 rounded-md p-2 mb-2 w-full" type="text" placeholder="Message" oninput="showtypin()" id="message"> 
+			<span id="typtxt" style="margin-top:5px;margin-bottom:5px"></span>
+			<button class="bg-blue-500 rounded-md p-2 text-white w-full mb-2">Send</button> 
+            <input type="file" name="image" id="fileInput" onchange="handleFileInputChange(event)">
+		</form> 
+		 
+	</div> 
+</body> 
+<script src="./socket.io.js"></script> 
+<script src="./script.js"></script> 
+</html>
